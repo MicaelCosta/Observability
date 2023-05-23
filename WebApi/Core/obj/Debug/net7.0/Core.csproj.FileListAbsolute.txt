@@ -1,0 +1,12 @@
+C:\repositories\observability\WebApi\Core\bin\Debug\net7.0\Core.deps.json
+C:\repositories\observability\WebApi\Core\bin\Debug\net7.0\Core.dll
+C:\repositories\observability\WebApi\Core\bin\Debug\net7.0\Core.pdb
+C:\repositories\observability\WebApi\Core\obj\Debug\net7.0\Core.csproj.AssemblyReference.cache
+C:\repositories\observability\WebApi\Core\obj\Debug\net7.0\Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\repositories\observability\WebApi\Core\obj\Debug\net7.0\Core.AssemblyInfoInputs.cache
+C:\repositories\observability\WebApi\Core\obj\Debug\net7.0\Core.AssemblyInfo.cs
+C:\repositories\observability\WebApi\Core\obj\Debug\net7.0\Core.csproj.CoreCompileInputs.cache
+C:\repositories\observability\WebApi\Core\obj\Debug\net7.0\Core.dll
+C:\repositories\observability\WebApi\Core\obj\Debug\net7.0\refint\Core.dll
+C:\repositories\observability\WebApi\Core\obj\Debug\net7.0\Core.pdb
+C:\repositories\observability\WebApi\Core\obj\Debug\net7.0\ref\Core.dll

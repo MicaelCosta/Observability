@@ -1,0 +1,15 @@
+C:\repositories\observability\WebApi\Application\bin\Debug\net7.0\Application.deps.json
+C:\repositories\observability\WebApi\Application\bin\Debug\net7.0\Application.dll
+C:\repositories\observability\WebApi\Application\bin\Debug\net7.0\Application.pdb
+C:\repositories\observability\WebApi\Application\bin\Debug\net7.0\Core.dll
+C:\repositories\observability\WebApi\Application\bin\Debug\net7.0\Core.pdb
+C:\repositories\observability\WebApi\Application\obj\Debug\net7.0\Application.csproj.AssemblyReference.cache
+C:\repositories\observability\WebApi\Application\obj\Debug\net7.0\Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\repositories\observability\WebApi\Application\obj\Debug\net7.0\Application.AssemblyInfoInputs.cache
+C:\repositories\observability\WebApi\Application\obj\Debug\net7.0\Application.AssemblyInfo.cs
+C:\repositories\observability\WebApi\Application\obj\Debug\net7.0\Application.csproj.CoreCompileInputs.cache
+C:\repositories\observability\WebApi\Application\obj\Debug\net7.0\Application.csproj.CopyComplete
+C:\repositories\observability\WebApi\Application\obj\Debug\net7.0\Application.dll
+C:\repositories\observability\WebApi\Application\obj\Debug\net7.0\refint\Application.dll
+C:\repositories\observability\WebApi\Application\obj\Debug\net7.0\Application.pdb
+C:\repositories\observability\WebApi\Application\obj\Debug\net7.0\ref\Application.dll

@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "X/l7N5jZnrYsUpaYIs9PVEkKygpRCs2MRLYUnU5xpKjVYx7bIDjNLfvChESNiKG+u4y9d0pdKUBblokdHALFnw==",
+  "success": true,
+  "projectFilePath": "C:\\repositories\\observability\\WebApi\\Application\\Application.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\amorim\\.nuget\\packages\\mediatr\\12.0.1\\mediatr.12.0.1.nupkg.sha512",
+    "C:\\Users\\amorim\\.nuget\\packages\\mediatr.contracts\\2.0.1\\mediatr.contracts.2.0.1.nupkg.sha512",
+    "C:\\Users\\amorim\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\6.0.0\\microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
