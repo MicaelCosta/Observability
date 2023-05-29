@@ -24,7 +24,6 @@
           "OpenTelemetry.Instrumentation.EntityFrameworkCore": "1.0.0-beta.6",
           "OpenTelemetry.Instrumentation.Http": "1.0.0-rc9.14",
           "OpenTelemetry.Instrumentation.Runtime": "1.1.0-rc.2",
-          "OpenTelemetry.Instrumentation.SqlClient": "1.0.0-rc9.14",
           "Swashbuckle.AspNetCore": "6.4.0"
         },
         "runtime": {
@@ -706,18 +705,6 @@
           "lib/net6.0/OpenTelemetry.Instrumentation.Runtime.dll": {
             "assemblyVersion": "1.1.0.2",
             "fileVersion": "1.1.0.2"
-          }
-        }
-      },
-      "OpenTelemetry.Instrumentation.SqlClient/1.0.0-rc9.14": {
-        "dependencies": {
-          "Microsoft.Extensions.Options": "7.0.0",
-          "OpenTelemetry.Api.ProviderBuilderExtensions": "1.4.0"
-        },
-        "runtime": {
-          "lib/netstandard2.0/OpenTelemetry.Instrumentation.SqlClient.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.802"
           }
         }
       },
@@ -1980,13 +1967,6 @@
       "sha512": "sha512-1KKUd/W3U5oIAQcjUEv5FR1UTYKNQYnBdGKaGEavU1dtwEKQugvSbDgaepZruQ31ecA+XeLU3OoAqKarcm74RA==",
       "path": "opentelemetry.instrumentation.runtime/1.1.0-rc.2",
       "hashPath": "opentelemetry.instrumentation.runtime.1.1.0-rc.2.nupkg.sha512"
-    },
-    "OpenTelemetry.Instrumentation.SqlClient/1.0.0-rc9.14": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-4gcN1o16f53baQ2zbgtvyK0IUyWxdAEWA4Z6UV4Ye0GcJayw2WK59ZKc0/r8oJOGzzL6IHxeqVsBhuKtKkhhXQ==",
-      "path": "opentelemetry.instrumentation.sqlclient/1.0.0-rc9.14",
-      "hashPath": "opentelemetry.instrumentation.sqlclient.1.0.0-rc9.14.nupkg.sha512"
     },
     "OpenTracing/0.12.1": {
       "type": "package",

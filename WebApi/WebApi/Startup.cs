@@ -2,15 +2,12 @@
 using Core.Repositories;
 using Infrastructure.Persistence.Context;
 using Infrastructure.Persistence.Repositories;
-using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
-using OpenTelemetry.Instrumentation.AspNetCore;
 using OpenTelemetry.Logs;
 using OpenTelemetry.Metrics;
 using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
-using System.Text.Json;
 
 namespace WebApi
 {
@@ -103,27 +100,23 @@ namespace WebApi
                             activity.AddTag("EXCEPTION_MESSAGE_CUSTOM", exception.Message);
                         };
                     })
-                    //.AddHttpClientInstrumentation(p =>
-                    //{
-                    //    p.RecordException = true;
-                    //})
-                    //.AddSqlClientInstrumentation(p =>
-                    //{
-                    //    p.SetDbStatementForText = true;
-                    //    p.EnableConnectionLevelAttributes = true;
-                    //    p.RecordException = true;
-                    //})
-                    //.AddEntityFrameworkCoreInstrumentation(p =>
-                    //{
-                    //    p.SetDbStatementForText = true;
-                    //    p.SetDbStatementForStoredProcedure = true;
-                    //    p.EnrichWithIDbCommand = (activity, command) =>
-                    //    {
-                    //        activity.IsAllDataRequested = true;
-                    //        activity.SetTag("commandtext", command.CommandText);
-                    //    };
-                    //})
-                    //.SetSampler(new AlwaysOnSampler())
+                    .AddHttpClientInstrumentation(p =>
+                    {
+                        p.RecordException = true;
+                    })
+                    .AddEntityFrameworkCoreInstrumentation(p =>
+                    {
+                        p.SetDbStatementForText = true;
+                        p.SetDbStatementForStoredProcedure = true;
+                        p.EnrichWithIDbCommand = (activity, command) =>
+                        {
+                            activity.IsAllDataRequested = true;
+                            activity.SetTag("COMMANDTEXT_CUSTOM", command.CommandText);
+                            activity.SetTag("COMMANDTIMEOUT_CUSTOM", command.CommandTimeout);
+                            activity.SetTag("COMMANDCONNECTION_CUSTOM", command.Connection?.ConnectionString);
+                        };
+                    })
+                    .SetSampler(new AlwaysOnSampler())
                     .AddJaegerExporter(p =>
                     {
                         p.AgentHost = Configuration.GetValue<string>("DistributedTracing:Jaeger:Host");
@@ -137,17 +130,18 @@ namespace WebApi
                 builder.SetMinimumLevel(LogLevel.Debug);
                 builder.AddOpenTelemetry(options =>
                 {
-                    options.AddConsoleExporter().SetResourceBuilder(ResourceBuilder.CreateDefault()
-                        .AddService(Configuration.GetValue<string>("DistributedTracing:Jaeger:ServiceName") ?? string.Empty));
+                    options.AddConsoleExporter()
+                           .SetResourceBuilder(ResourceBuilder.CreateDefault()
+                                                              .AddService(Configuration.GetValue<string>("DistributedTracing:Jaeger:ServiceName") ?? string.Empty));
                 });
             });
 
-            //services.Configure<OpenTelemetryLoggerOptions>(opt =>
-            //{
-            //    opt.IncludeScopes = true;
-            //    opt.ParseStateValues = true;
-            //    opt.IncludeFormattedMessage = true;
-            //});
+            services.Configure<OpenTelemetryLoggerOptions>(opt =>
+            {
+                opt.IncludeScopes = true;
+                opt.ParseStateValues = true;
+                opt.IncludeFormattedMessage = true;
+            });
         }
     }
 }

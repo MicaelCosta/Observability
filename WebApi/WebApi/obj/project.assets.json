@@ -1200,23 +1200,6 @@
           }
         }
       },
-      "OpenTelemetry.Instrumentation.SqlClient/1.0.0-rc9.14": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Extensions.Options": "3.1.0",
-          "OpenTelemetry.Api.ProviderBuilderExtensions": "1.4.0"
-        },
-        "compile": {
-          "lib/netstandard2.0/OpenTelemetry.Instrumentation.SqlClient.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/netstandard2.0/OpenTelemetry.Instrumentation.SqlClient.dll": {
-            "related": ".xml"
-          }
-        }
-      },
       "OpenTracing/0.12.1": {
         "type": "package",
         "compile": {
@@ -4489,22 +4472,6 @@
         "opentelemetry-icon-color.png",
         "opentelemetry.instrumentation.runtime.1.1.0-rc.2.nupkg.sha512",
         "opentelemetry.instrumentation.runtime.nuspec"
-      ]
-    },
-    "OpenTelemetry.Instrumentation.SqlClient/1.0.0-rc9.14": {
-      "sha512": "4gcN1o16f53baQ2zbgtvyK0IUyWxdAEWA4Z6UV4Ye0GcJayw2WK59ZKc0/r8oJOGzzL6IHxeqVsBhuKtKkhhXQ==",
-      "type": "package",
-      "path": "opentelemetry.instrumentation.sqlclient/1.0.0-rc9.14",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "lib/net462/OpenTelemetry.Instrumentation.SqlClient.dll",
-        "lib/net462/OpenTelemetry.Instrumentation.SqlClient.xml",
-        "lib/netstandard2.0/OpenTelemetry.Instrumentation.SqlClient.dll",
-        "lib/netstandard2.0/OpenTelemetry.Instrumentation.SqlClient.xml",
-        "opentelemetry-icon-color.png",
-        "opentelemetry.instrumentation.sqlclient.1.0.0-rc9.14.nupkg.sha512",
-        "opentelemetry.instrumentation.sqlclient.nuspec"
       ]
     },
     "OpenTracing/0.12.1": {
@@ -7888,7 +7855,6 @@
       "OpenTelemetry.Instrumentation.EntityFrameworkCore >= 1.0.0-beta.6",
       "OpenTelemetry.Instrumentation.Http >= 1.0.0-rc9.14",
       "OpenTelemetry.Instrumentation.Runtime >= 1.1.0-rc.2",
-      "OpenTelemetry.Instrumentation.SqlClient >= 1.0.0-rc9.14",
       "Swashbuckle.AspNetCore >= 6.4.0"
     ]
   },
@@ -7999,10 +7965,6 @@
           "OpenTelemetry.Instrumentation.Runtime": {
             "target": "Package",
             "version": "[1.1.0-rc.2, )"
-          },
-          "OpenTelemetry.Instrumentation.SqlClient": {
-            "target": "Package",
-            "version": "[1.0.0-rc9.14, )"
           },
           "Swashbuckle.AspNetCore": {
             "target": "Package",

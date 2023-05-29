@@ -311,10 +311,6 @@
               "target": "Package",
               "version": "[1.1.0-rc.2, )"
             },
-            "OpenTelemetry.Instrumentation.SqlClient": {
-              "target": "Package",
-              "version": "[1.0.0-rc9.14, )"
-            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.4.0, )"

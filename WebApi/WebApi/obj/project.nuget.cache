@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "SBe4SCr/VqN+wQX1Q0BaWj6jGycVqktK00zVKlwj+4inQAJ0FRQQR9vrRpMpcWqud4Af+YSwNA8d8yWZockG3w==",
+  "dgSpecHash": "E/Or+74xGiTOiRIpmTioBSHTbNgQxb01U0XImXQua0Q+ECeMUUoxCiEv1xGFkVm4VXhFrteYBBKFqveTxpriuw==",
   "success": true,
   "projectFilePath": "C:\\repositories\\observability\\WebApi\\WebApi\\WebApi.csproj",
   "expectedPackageFiles": [
@@ -75,7 +75,6 @@
     "C:\\Users\\amorim\\.nuget\\packages\\opentelemetry.instrumentation.entityframeworkcore\\1.0.0-beta.6\\opentelemetry.instrumentation.entityframeworkcore.1.0.0-beta.6.nupkg.sha512",
     "C:\\Users\\amorim\\.nuget\\packages\\opentelemetry.instrumentation.http\\1.0.0-rc9.14\\opentelemetry.instrumentation.http.1.0.0-rc9.14.nupkg.sha512",
     "C:\\Users\\amorim\\.nuget\\packages\\opentelemetry.instrumentation.runtime\\1.1.0-rc.2\\opentelemetry.instrumentation.runtime.1.1.0-rc.2.nupkg.sha512",
-    "C:\\Users\\amorim\\.nuget\\packages\\opentelemetry.instrumentation.sqlclient\\1.0.0-rc9.14\\opentelemetry.instrumentation.sqlclient.1.0.0-rc9.14.nupkg.sha512",
     "C:\\Users\\amorim\\.nuget\\packages\\opentracing\\0.12.1\\opentracing.0.12.1.nupkg.sha512",
     "C:\\Users\\amorim\\.nuget\\packages\\runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl\\4.3.2\\runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl.4.3.2.nupkg.sha512",
     "C:\\Users\\amorim\\.nuget\\packages\\runtime.fedora.23-x64.runtime.native.system.security.cryptography.openssl\\4.3.2\\runtime.fedora.23-x64.runtime.native.system.security.cryptography.openssl.4.3.2.nupkg.sha512",
