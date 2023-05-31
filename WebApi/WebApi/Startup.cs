@@ -1,5 +1,7 @@
 ﻿using Application.Commands.CreatePedido;
+using Core.Caching;
 using Core.Repositories;
+using Infrastructure.Caching;
 using Infrastructure.Persistence.Context;
 using Infrastructure.Persistence.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -8,6 +10,7 @@ using OpenTelemetry.Logs;
 using OpenTelemetry.Metrics;
 using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
+using StackExchange.Redis;
 
 namespace WebApi
 {
@@ -29,6 +32,7 @@ namespace WebApi
             services.AddScoped<IPedidoRepository, PedidoRepository>();
             services.AddScoped<IProdutoRepository, ProdutoRepository>();
             services.AddScoped<IPedidoProdutoRepository, PedidoProdutoRepository>();
+            services.AddScoped<ICachingService, CachingService>();
 
             services.AddControllers();
 
@@ -37,6 +41,14 @@ namespace WebApi
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebApi", Version = "v1" });
+            });
+
+            IConnectionMultiplexer redisConnectionMultiplexer = ConnectionMultiplexer.ConnectAsync(Configuration.GetValue<string>("Redis:Url") ?? string.Empty).Result;
+            services.AddSingleton(redisConnectionMultiplexer);
+            services.AddStackExchangeRedisCache(o =>
+            {
+                o.InstanceName = "MicaCake";
+                o.ConnectionMultiplexerFactory = () => Task.FromResult(redisConnectionMultiplexer);
             });
 
             AddOpenTelemetry(services);
@@ -115,6 +127,11 @@ namespace WebApi
                             activity.SetTag("COMMANDTIMEOUT_CUSTOM", command.CommandTimeout);
                             activity.SetTag("COMMANDCONNECTION_CUSTOM", command.Connection?.ConnectionString);
                         };
+                    })
+                    .AddRedisInstrumentation(p =>
+                    {
+                        p.SetVerboseDatabaseStatements = true;
+                        p.FlushInterval = TimeSpan.FromSeconds(1);
                     })
                     .SetSampler(new AlwaysOnSampler())
                     .AddJaegerExporter(p =>

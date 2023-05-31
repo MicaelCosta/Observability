@@ -1,4 +1,5 @@
 ﻿using Application.InputModels;
+using Core.Caching;
 using Core.Entities;
 using Core.Repositories;
 using MediatR;
@@ -9,12 +10,15 @@ namespace Application.Commands.CreatePedido
     {
         private readonly IPedidoRepository _pedidoRepository;
         private readonly IPedidoProdutoRepository _pedidoProdutoRepository;
+        private readonly ICachingService _cache;
 
         public CreatePedidoCommandHandler(IPedidoRepository pedidoRepository,
-                                          IPedidoProdutoRepository pedidoProdutoRepository)
+                                          IPedidoProdutoRepository pedidoProdutoRepository,
+                                          ICachingService cache)
         {
             _pedidoRepository = pedidoRepository;
             _pedidoProdutoRepository = pedidoProdutoRepository;
+            _cache = cache;
         }
 
         public async Task<long> Handle(CreatePedidoCommand request, CancellationToken cancellationToken)
@@ -26,6 +30,8 @@ namespace Application.Commands.CreatePedido
             await _pedidoProdutoRepository.AddAsync(Map(pedido.Id, request.ListProduto));
 
             await _pedidoRepository.SaveChangesAsync();
+
+            await _cache.RemoveAsync("ProdutoAll");
 
             return pedido.Id;
         }
