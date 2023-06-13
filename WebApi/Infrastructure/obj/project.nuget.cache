@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "nvVHXs5IB/P7jCbZn20/xjiVgIqhkcvSxf+3gMQq+ySEQr9amEAZEOud+rCiXAOTSNxXGbhfj+V2Z0GQx8a4tg==",
+  "dgSpecHash": "1Mu2elLsgyV/gxlfq4VV0eA1ZlD5EVNpHkTuUNtN/prjP91HB12tz3rdOnIl51bGun4lhKfbhcMc9TQHE6RX5Q==",
   "success": true,
   "projectFilePath": "C:\\repositories\\observability\\WebApi\\Infrastructure\\Infrastructure.csproj",
   "expectedPackageFiles": [
