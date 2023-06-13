@@ -1,7 +1,8 @@
 ﻿using Application.InputModels;
-using Core.Caching;
+using Application.ViewModels;
 using Core.Entities;
 using Core.Repositories;
+using MassTransit;
 using MediatR;
 
 namespace Application.Commands.CreatePedido
@@ -10,15 +11,15 @@ namespace Application.Commands.CreatePedido
     {
         private readonly IPedidoRepository _pedidoRepository;
         private readonly IPedidoProdutoRepository _pedidoProdutoRepository;
-        private readonly ICachingService _cache;
+        private readonly IPublishEndpoint _publishEndpoint;
 
         public CreatePedidoCommandHandler(IPedidoRepository pedidoRepository,
                                           IPedidoProdutoRepository pedidoProdutoRepository,
-                                          ICachingService cache)
+                                          IPublishEndpoint publishEndpoint)
         {
             _pedidoRepository = pedidoRepository;
             _pedidoProdutoRepository = pedidoProdutoRepository;
-            _cache = cache;
+            _publishEndpoint = publishEndpoint;
         }
 
         public async Task<long> Handle(CreatePedidoCommand request, CancellationToken cancellationToken)
@@ -31,7 +32,7 @@ namespace Application.Commands.CreatePedido
 
             await _pedidoRepository.SaveChangesAsync();
 
-            await _cache.RemoveAsync("ProdutoAll");
+            await _publishEndpoint.Publish(Map(pedido.Id));
 
             return pedido.Id;
         }
@@ -43,7 +44,7 @@ namespace Application.Commands.CreatePedido
             return new Pedido()
             {
                 ValorTotal = valorTotal,
-                DataInclusao = new DateTime()
+                DataInclusao = DateTime.Now
             };
         }
 
@@ -58,6 +59,14 @@ namespace Application.Commands.CreatePedido
                 PrecoTotal = a.Quantidade * a.Preco
             })
             .ToList();
+        }
+
+        private PedidoViewModel Map(long id)
+        {
+            return new PedidoViewModel()
+            {
+                Id = id
+            };
         }
     }
 }

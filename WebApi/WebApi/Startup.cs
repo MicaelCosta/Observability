@@ -1,9 +1,11 @@
 ﻿using Application.Commands.CreatePedido;
+using Application.Consumers;
 using Core.Caching;
 using Core.Repositories;
 using Infrastructure.Caching;
 using Infrastructure.Persistence.Context;
 using Infrastructure.Persistence.Repositories;
+using MassTransit;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using OpenTelemetry.Logs;
@@ -52,6 +54,8 @@ namespace WebApi
             });
 
             AddOpenTelemetry(services);
+
+            AddMassTransitExtension(services);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -133,6 +137,7 @@ namespace WebApi
                         p.SetVerboseDatabaseStatements = true;
                         p.FlushInterval = TimeSpan.FromSeconds(1);
                     })
+                    .AddMassTransitInstrumentation()
                     .SetSampler(new AlwaysOnSampler())
                     .AddJaegerExporter(p =>
                     {
@@ -158,6 +163,26 @@ namespace WebApi
                 opt.IncludeScopes = true;
                 opt.ParseStateValues = true;
                 opt.IncludeFormattedMessage = true;
+            });
+        }
+
+        private void AddMassTransitExtension(IServiceCollection services)
+        {
+            services.AddMassTransit(x =>
+            {
+                x.AddDelayedMessageScheduler();
+                x.SetKebabCaseEndpointNameFormatter();
+
+                x.AddConsumer<PedidoConsumer>(typeof(PedidoConsumerDefinition));
+
+                x.UsingRabbitMq((ctx, cfg) =>
+                {
+                    cfg.Host(Configuration.GetValue<string>("RabbitMq:Url") ?? string.Empty);
+
+                    cfg.UseDelayedMessageScheduler();
+                    cfg.ConfigureEndpoints(ctx, new KebabCaseEndpointNameFormatter("dev", false));
+                    cfg.UseMessageRetry(retry => { retry.Interval(3, TimeSpan.FromSeconds(5)); });
+                });
             });
         }
     }

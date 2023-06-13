@@ -12,5 +12,7 @@ namespace Core.Entities
         public decimal ValorTotal  { get; set; }
 
         public DateTime DataInclusao { get; set; }
+
+        public DateTime? DataNotificacao { get; set; }
     }
 }

@@ -10,7 +10,8 @@ create table Produto(
 create table Pedido(
 	Id bigint not null primary key identity(1, 1),
 	ValorTotal decimal(5,2) not null,
-	DataInclusao Date not null
+	DataInclusao Date not null,
+	DataNotificacao Date
 );
 
 create table PedidoProduto(
@@ -30,3 +31,8 @@ insert into Produto values ('Bolo Kit Kat com creme de avelã', 64.90, 'https://w
 insert into Produto values ('Bolo piscina fondue', 69.90, 'https://conteudo.imguol.com.br/c/entretenimento/18/2020/07/08/bolo-piscina-fondue-1594221790135_v2_1920x1920.jpg');
 insert into Produto values ('Bolo de coxinha', 39.90, 'https://areceitasimples.com/wp-content/uploads/2020/11/bolo-coxinha.png');
 insert into Produto values ('Bolo Red Vevelt', 59.90, 'https://a2.vnda.com.br/2000x/bolodamadre/2019/01/23/1102-bolo-red-velvet-371.jpg?1548250012');
+
+
+--drop table PedidoProduto;
+--drop table Pedido;
+--drop table Produto;
